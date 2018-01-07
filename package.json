@@ -1,0 +1,36 @@
+{
+  "name": "starter-web-project",
+  "version": "1.1.0",
+  "description": "build tools and module loaders to get your project up an running",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --output-style compressed -o dist/css src/scss",
+    "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '&gt; 5%, ie 9' -r dist/css/*",
+    "imagemin": "imagemin src/images dist/images -p",
+    "build:css": "npm run scss && npm run autoprefixer",
+    "build:js": "webpack --config webpack.config.js",
+    "build:images": "npm run imagemin",
+    "build:all": "npm run build:css && npm run build:js && npm run build:images",
+    "serve": "browser-sync start --server --files '*.html, dist/css/*.css, dist/js/*.js'",
+    "watch:html": "onchange '*.html' -- echo",
+    "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
+    "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
+    "watch:all": "parallelshell 'npm run serve' 'npm run watch:css' 'npm run watch:js' 'npm run watch:html' "
+  },
+  "author": "Peter Arevalo",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "browser-sync": "^2.18.13",
+    "imagemin-cli": "^3.0.0",
+    "onchange": "^3.2.1",
+    "parallelshell": "^3.0.1",
+    "postcss-cli": "^4.1.0",
+    "uglify-js": "^3.0.28",
+    "webpack": "^3.5.5"
+  },
+  "dependencies": {
+    "picnic": "^6.4.0",
+    "smooth-scroll": "^12.1.5"
+  }
+}
