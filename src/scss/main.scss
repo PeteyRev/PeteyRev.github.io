@@ -64,9 +64,6 @@ button, [type=submit]{
             display: inline-block;
             margin: 0 1rem;
             letter-spacing: 3.2px;
-            &:last-child {
-                margin-right: 0;
-            }
         }
     }
 }
@@ -98,7 +95,7 @@ button, [type=submit]{
     overflow: hidden;   
     position: relative;
     height: 100vh;
-    background-image: url(http://localhost:3000/src/img/abstract.jpg);
+    background-image: url('/src/img/abstract.jpg');
     .hero-overlay {
         position: absolute;
         width: 100%;
@@ -155,29 +152,25 @@ button, [type=submit]{
     padding-bottom: 3rem;
 }
 
-#Skills{
+#Skills, #Work{
     background:#f3f0f0;
 }
 
-.skills-grid {
-
-    .skill-point{
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        padding: 2rem;
-        height:95%;
-        background:#ffffff;
-        @include breakpoint(md){
-            height:80%;
-        }
-    }
-
-}
 
 .skill-point {
     text-align: center;
-    margin: 0.5rem;
+    .inner{
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        margin:1rem 0rem;
+        padding: 1rem;
+        background:#ffffff;
+        height: 100%;
+    }
     @include breakpoint(md){
-        margin: 2rem;
+        // height:80%;
+    }
+    @include breakpoint(md){
+        // margin: 2rem;
     }
     i {
         font-size: 3.5rem;
@@ -227,11 +220,14 @@ button, [type=submit]{
         padding: 2rem 0;
         li {
             display: inline-block;
-            margin: 0 1.3rem;
+            margin: 0 .3rem;
             cursor:pointer;
-                    &:hover i{
+            @include breakpoint(md){
+                margin: 0 1.3rem;
+            }
+            &:hover i{
                 color:#6fb8e4;
-        }
+            }
         }
     }
     .icon {
@@ -292,20 +288,6 @@ button, [type=submit]{
 
 }
 
-article.card.bio-card {
-    border: none;
-    text-align: center;
-    img{
-        padding-right: 3rem;
-    }
-    footer { 
-        background:#6fb8e4;
-         p{
-             text-align: center;
-             color:#F6F7F8;
-         }
-    }
-}
 
 .card .close:hover, .modal .overlay ~ * .close:hover {
     color: #6fb8e4;
@@ -313,4 +295,45 @@ article.card.bio-card {
 
 .contact-wrapper h3{
     font-size:30px;
+    padding-bottom: 0;
+}
+
+.work-cards {
+    .card{
+        background:transparent;
+        border:none;
+        padding-bottom: 2rem;
+        cursor: pointer;
+        img{
+            transition:.3s ease-in-out;
+            width:100%;
+        }
+        &:hover{
+            img{
+                opacity:.7;
+                filter: grayscale(100%);
+            }
+            footer{
+                opacity:1;
+            }
+        }
+    }
+    .inner{
+        margin:.5rem;
+        background:#ffffff;
+        height: 100%;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+    footer{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width:90%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        transition:.3s ease-in-out;
+        opacity:0;
+        background: rgba(255,255,255,0.52);
+        border-radius: .2em;
+    }
 }
