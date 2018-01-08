@@ -24,6 +24,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     color: #404240;
+    overflow-x: hidden;
 }
 
 p {
@@ -41,7 +42,10 @@ h2{
 }
 
 button, [type=submit]{
-    background-color: #404240;
+    background-color: #6fb8e4;
+    &.alt{
+        background:#6fb8e4;
+    }
 }
 
 .align-center{
@@ -50,7 +54,7 @@ button, [type=submit]{
 
 .header {
     padding: 1.5rem 0;
-    background: #C8C8C8;
+    background: #404240;
     position: fixed;
     width: 100%;
     z-index: 1;
@@ -69,7 +73,7 @@ button, [type=submit]{
 }
 
 .header-scroll {
-    background: rgb(64, 66, 64);
+    background: #656965;
     padding: .75rem 0;
     ul li {
         color: #F6F7F8;
@@ -95,13 +99,37 @@ button, [type=submit]{
     overflow: hidden;   
     position: relative;
     height: 100vh;
-    background-image: url('/src/img/abstract.jpg');
+    background: linear-gradient(265deg, #aeaeae, #6eb8e4, #ffffff, #404240);
+    background-size: 800% 800%;
+    
+    -webkit-animation: AnimationName 7s ease infinite;
+    -moz-animation: AnimationName 7s ease infinite;
+    animation: AnimationName 7s ease infinite;
+    
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 51%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 51%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 51%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 51%}
+    }
+    @keyframes AnimationName { 
+        0%{background-position:0% 51%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 51%}
+    }
     .hero-overlay {
         position: absolute;
         width: 100%;
         height: 100%;
         background: #C8C8C8;
         opacity: .45;
+        background-image: url('/src/img/Austin-Skyline-Blackout1.png');
+        background-repeat: no-repeat;
+        background-position: bottom;
     }
     .hero-txt {
         width:90%;
@@ -112,7 +140,10 @@ button, [type=submit]{
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         @include breakpoint(md){
-            width:25%;
+            width:55%;
+        }
+        @include breakpoint(lg){
+            width:35%;
         }
     }
     p {
@@ -142,10 +173,64 @@ button, [type=submit]{
 }
 }
 
+.bounce {
+	-moz-animation: bounce 3s infinite;
+	-webkit-animation: bounce 3s infinite;
+	animation: bounce 3s infinite;
+}
+@-moz-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+
 
 .section-top-padding {
     padding-top: 3rem;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
 }
 
 .section-btm-padding {
@@ -159,12 +244,14 @@ button, [type=submit]{
 
 .skill-point {
     text-align: center;
+    margin-bottom:.5rem;
     .inner{
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        margin:1rem 0rem;
-        padding: 1rem;
+        margin:1rem 0.3rem;
+        padding: 2rem 2rem 0 2rem;
         background:#ffffff;
         height: 100%;
+        border-radius: .2em;
     }
     @include breakpoint(md){
         // height:80%;
@@ -179,9 +266,6 @@ button, [type=submit]{
         padding:0;
         color: #6fb8e4;
         
-    }
-    p{
-        text-align: left;
     }
 }
 
@@ -225,8 +309,14 @@ button, [type=submit]{
             @include breakpoint(md){
                 margin: 0 1.3rem;
             }
-            &:hover i{
-                color:#6fb8e4;
+            a{
+                color:#404240;
+            }
+            &:hover{
+                a{
+                    color:#6fb8e4;
+                }
+                
             }
         }
     }
@@ -253,7 +343,7 @@ button, [type=submit]{
 
 .slider-carousel > div{
     padding: 1rem 2rem;
-    background:gray;
+    background:#6fb8e4;
     @include breakpoint(md){
         padding: 5rem 7rem;
     }
@@ -307,11 +397,13 @@ button, [type=submit]{
         img{
             transition:.3s ease-in-out;
             width:100%;
+            filter: grayscale(100%);
+            border-radius: .2em;
         }
         &:hover{
             img{
                 opacity:.7;
-                filter: grayscale(100%);
+                filter: grayscale(0%);
             }
             footer{
                 opacity:1;
@@ -323,6 +415,7 @@ button, [type=submit]{
         background:#ffffff;
         height: 100%;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        border-radius: .2em;
     }
     footer{
         position: absolute;
@@ -333,7 +426,27 @@ button, [type=submit]{
         transform: translate(-50%, -50%);
         transition:.3s ease-in-out;
         opacity:0;
-        background: rgba(255,255,255,0.52);
+        background: rgb(64, 66, 64);
+        color:#ffffff;
         border-radius: .2em;
+        text-align: center;
+        .button-wrap{
+            display: block;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        p{
+            color:#ffffff;
+            display:none;
+            @include breakpoint(md){
+                display: initial;
+            }
+
+        }
     }
+}
+
+article.modal-body{
+    width: 500px;
+    padding-bottom: 2rem !important;
 }
