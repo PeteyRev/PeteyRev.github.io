@@ -22,7 +22,10 @@
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "browser-sync": "^2.18.13",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "imagemin-cli": "^3.0.0",
+    "mustache": "^2.3.0",
     "onchange": "^3.2.1",
     "parallelshell": "^3.0.1",
     "postcss-cli": "^4.1.0",
